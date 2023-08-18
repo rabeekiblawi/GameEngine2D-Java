@@ -6,6 +6,9 @@ public   class GameObectsPoolManager {
 
     static public List<GameObject> GameObjectsPool;
 
+    static public void init(){
+        GameObjectsPool = new java.util.ArrayList<>();
+    }
     static public void addGameObject(GameObject gameObject){
         if(GameObjectsPool == null)
             GameObjectsPool = new java.util.ArrayList<>();

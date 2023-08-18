@@ -1,11 +1,11 @@
+package SampleGame;
 import java.awt.Image;
-
 import Engine.Core.GameObject;
 
 public class Player extends GameObject {
 
-    public Player(String name, Image sprite) {
-        super(name, sprite);
+    public Player(String name) {
+        super(name);
     }
     
     @Override

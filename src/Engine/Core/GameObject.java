@@ -9,23 +9,15 @@ import java.awt.image.BufferedImage;
 public abstract class GameObject {
 
     private Transform transform;
-    private Image sprite;
     private Graphics2D g2d;
     private final List<Component> components;
     public String name;
 
-    public GameObject(String name,Image sprite) {
+    public GameObject(String name) {
         GameObectsPoolManager.addGameObject(this);
         this.transform = new Transform();
         this.components = new ArrayList<>();
         this.name = name;
-
-        if (sprite == null) {
-            this.sprite = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-            this.g2d = ((BufferedImage)this.sprite).createGraphics();
-        } else {
-            this.sprite = sprite;
-        }
     }
 
     public Transform getTransform() {
@@ -34,14 +26,6 @@ public abstract class GameObject {
 
     public void setTransform(Transform transform) {
         this.transform = transform;
-    }
-
-    public Image getSprite() {
-        return sprite;
-    }
-
-    public void setSprite(Image sprite) {
-        this.sprite = sprite;
     }
 
     public Graphics2D getG2d() {

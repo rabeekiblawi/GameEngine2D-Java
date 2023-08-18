@@ -1,5 +1,6 @@
 import Engine.Core.GameObectsPoolManager;
 import Engine.Core.GameObject;
+import SampleGame.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +9,7 @@ public class GameLoop extends JFrame implements Runnable {
 
     private boolean running;
     public int x = 0;
+    public Player Player = new Player("player");
 
     public GameLoop() {
         setSize(800, 600);
@@ -18,7 +20,7 @@ public class GameLoop extends JFrame implements Runnable {
     }
 
     public void init() {
-
+        GameObectsPoolManager.init();
     }
 
     public void start() {
@@ -54,6 +56,8 @@ public class GameLoop extends JFrame implements Runnable {
     }
 
     private void render() {
-
+        GameObectsPoolManager.GameObjectsPool.forEach(gameObject -> {
+            gameObject.render();
+        });
     }
 }

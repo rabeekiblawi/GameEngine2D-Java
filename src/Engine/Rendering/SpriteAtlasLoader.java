@@ -1,20 +1,16 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+package Engine.Rendering;
 
+import java.awt.image.BufferedImage;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import java.io.StringReader;
 public class SpriteAtlasLoader {
     private BufferedImage spriteSheet;
 
     public SpriteAtlasLoader(BufferedImage spriteSheet, String jsonFilePath) {
         this.spriteSheet = spriteSheet;
         
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            spriteAtlasData = mapper.readValue(new File(jsonFilePath), SpriteAtlasData.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 }
