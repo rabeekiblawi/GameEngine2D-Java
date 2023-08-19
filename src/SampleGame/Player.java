@@ -1,26 +1,25 @@
 package SampleGame;
-import java.awt.Image;
+
 import Engine.Core.GameObject;
 
 public class Player extends GameObject {
 
-    public Player(String name) {
-        super(name);
+    public Player( ) {
+        super();
     }
     
     @Override
     public void init() {
-
+        System.out.println("size "+components.size());
     }
 
     @Override
     public void render() {
-
     }
 
     @Override
     public void update() {
-
+        System.out.println("size "+components.size());
     }
 
 }

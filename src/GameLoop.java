@@ -1,17 +1,19 @@
 import Engine.Core.GameObectsPoolManager;
 import Engine.Core.GameObject;
+import Engine.Rendering.RenderableSprite;
 import SampleGame.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class GameLoop extends JFrame implements Runnable {
 
     private boolean running;
     public int x = 0;
-    public Player Player = new Player("player");
+    public Player Player = new Player();
 
-    public GameLoop() {
+    public GameLoop(List<RenderableSprite> sprites) {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -21,9 +23,13 @@ public class GameLoop extends JFrame implements Runnable {
 
     public void init() {
         GameObectsPoolManager.init();
+        SampleGame.Player player = new SampleGame.Player();
     }
 
     public void start() {
+         GameObectsPoolManager.GameObjectsPool.forEach(gameObject -> {
+            gameObject.init();
+        });
         running = true;
         new Thread(this).start();
         System.out.println(GameObectsPoolManager.GameObjectsPool.size() + "");
@@ -52,12 +58,10 @@ public class GameLoop extends JFrame implements Runnable {
     }
 
     private void updateGame() {
-        // Update game state
+        GameObectsPoolManager.GameObjectsPool.forEach(GameObject::update);
     }
 
     private void render() {
-        GameObectsPoolManager.GameObjectsPool.forEach(gameObject -> {
-            gameObject.render();
-        });
+        GameObectsPoolManager.GameObjectsPool.forEach(GameObject::render);
     }
 }

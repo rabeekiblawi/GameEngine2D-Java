@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jboss.spec.javax.json.api_1.1_spec" level="project" />
+    <orderEntry type="library" name="json" level="project" />
   </component>
 </module>

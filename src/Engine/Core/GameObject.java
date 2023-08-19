@@ -10,14 +10,12 @@ public abstract class GameObject {
 
     private Transform transform;
     private Graphics2D g2d;
-    private final List<Component> components;
-    public String name;
+    public final List<Component> components;
 
-    public GameObject(String name) {
+    public GameObject( ) {
         GameObectsPoolManager.addGameObject(this);
         this.transform = new Transform();
         this.components = new ArrayList<>();
-        this.name = name;
     }
 
     public Transform getTransform() {
@@ -45,26 +43,11 @@ public abstract class GameObject {
                 .orElse(null);
     }
 
-    // This method adds a new component of the specified type
-    public <T extends Component> T addComponent(Class<T> type) {
-        try {
-            T component = type.getDeclaredConstructor().newInstance();
-            components.add(component);
-            return component;
-        } catch (InstantiationException | IllegalAccessException e) {
-            System.err.println("Could not instantiate the component: " + type.getName());
-            e.printStackTrace();
-            return null;
-        } catch (NoSuchMethodException e) {
-            System.err.println("No default constructor found for the component: " + type.getName());
-            e.printStackTrace();
-            return null;
-        } catch (Exception e) {
-            System.err.println("An error occurred while adding the component: " + type.getName());
-            e.printStackTrace();
-            return null;
-        }
+    public <T extends Component> void addComponent(T component) {
+        components.add(component);
     }
+
+
 
     public abstract void init();
 
